@@ -18,8 +18,8 @@ public class Look : MonoBehaviour
    
     void Update()
     {
-        mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * mousSens;
-        mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * mousSens;
+        mouseX = Input.GetAxis("Mouse X") *  mousSens;
+        mouseY = Input.GetAxis("Mouse Y") *  mousSens;
 
         dir = new Vector3(0, mouseX, 0);
         playerBody.transform.Rotate(dir * mousSens * Time.deltaTime);
