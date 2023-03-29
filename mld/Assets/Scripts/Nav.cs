@@ -5,52 +5,60 @@ using UnityEngine.AI;
 
 public class Nav : MonoBehaviour
 {
-
     public GameObject player;
-    public float aggroR = 7f;
+    public Transform[] wayPoints;
+
     public float attackR = 1f;
-
     public int damage = 5;
-
+    public int wayPointIndex;
+    private NavMeshAgent agent;
+    public float runToRange;
+    public float attackRange;
     public float walkSpeed;
     public float runSpeed;
-    // Start is called before the first frame update
+    
+    // Start is called befo{re the first frame update
     void Start()
     {
-        
+        wayPointIndex = 0;
+        agent = GetComponent<NavMeshAgent>();
+        agent.height = GetComponent<CapsuleCollider>().height;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // wanneer ze in de aggro range zijn van de speler zal de snelheid van 7 naar 1000 gaan. wanneer ze niet in de range zijn zal de snelheid veranderen naar 7
-        GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
-
-        if (Vector3.Distance(transform.position, player.transform.position) <= aggroR)
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        if (distance > runToRange)
         {
-            GetComponent<NavMeshAgent>().speed = runSpeed;
-
-        }
+            WayPoints();
+            agent.speed = walkSpeed;
+            agent.destination = (wayPoints[wayPointIndex].position);
+        } 
         else
         {
-            GetComponent<NavMeshAgent>().speed = walkSpeed;
+            agent.speed = runSpeed;
+            agent.destination = player.transform.position;
         }
-
-      
-
-
-    }
-    public void OnCollisionEnter(Collision collision)
-    {
-        if(Vector3.Distance(transform.position, player.transform.position)<= attackR)
+        if(distance < attackRange)
         {
-            player.GetComponent<Player>().health -=damage;
+            player.GetComponent<Player>().health -= damage;
+        }
+    }
+    public void WayPoints()
+    {
+        float distance = Vector3.Distance(transform.position, wayPoints[wayPointIndex].position);
+        agent.destination = wayPoints[wayPointIndex].position;
+        if (distance < 1f)
+        {
+
+            wayPointIndex++;
+            if(wayPointIndex > 3)
+            {
+                wayPointIndex = 0;
+            }
+
         }
         
-        if(player.GetComponent<Player>().health <= 0)
-        {
-            Debug.Log("You Died");
-            Time.timeScale = 0;
-        }
     }
 }
