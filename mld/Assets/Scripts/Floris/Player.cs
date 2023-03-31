@@ -6,22 +6,24 @@ public class Player : MonoBehaviour
 {
    public int health = 100;
    
-    public void SavePlayer()
+    public void SavePlayer(int i)
     {
-        SaveSystem.SavePlayer(this);
+        PlayerPrefs.SetFloat(i.ToString() + "PlayerX", transform.position.x);
+        PlayerPrefs.SetFloat(i.ToString() + "PlayerY", transform.position.y);
+        PlayerPrefs.SetFloat(i.ToString() + "PlayerZ", transform.position.z);
+
         Debug.Log("Saved");
     }
 
-    public void LoadPlayer()
+    public void LoadPlayer(int i)
     {
-       PlayerData data = SaveSystem.LoadPlayer();
+        Vector3 position = new Vector3
+         (
+            PlayerPrefs.GetFloat(i.ToString() + "PlayerX"),
+            PlayerPrefs.GetFloat(i.ToString() + "PlayerY"),
+            PlayerPrefs.GetFloat(i.ToString() + "PlayerZ")
 
-        health = data.health;
-
-        Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
+         );
         transform.position = position;
         Debug.Log("loaded");
     }
