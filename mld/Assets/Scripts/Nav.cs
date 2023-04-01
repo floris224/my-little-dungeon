@@ -7,6 +7,7 @@ public class Nav : MonoBehaviour
 {
     public GameObject player;
     public Transform[] wayPoints;
+    public Animator animator;
 
     public float attackR = 1f;
     public int damage = 5;
@@ -16,6 +17,10 @@ public class Nav : MonoBehaviour
     public float attackRange;
     public float walkSpeed;
     public float runSpeed;
+    public int startDelay;
+    public bool animFin;
+    public float timer;
+    public bool animbegin;
     
     // Start is called befo{re the first frame update
     void Start()
@@ -23,26 +28,50 @@ public class Nav : MonoBehaviour
         wayPointIndex = 0;
         agent = GetComponent<NavMeshAgent>();
         agent.height = GetComponent<CapsuleCollider>().height;
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (distance > runToRange)
+        if (animbegin == false)
         {
-            WayPoints();
-            agent.speed = walkSpeed;
-            agent.destination = (wayPoints[wayPointIndex].position);
-        } 
-        else
-        {
-            agent.speed = runSpeed;
-            agent.destination = player.transform.position;
+
+
+
+            float distance = Vector3.Distance(transform.position, player.transform.position);
+            if (distance > runToRange)
+            {
+                WayPoints();
+                agent.speed = walkSpeed;
+                agent.destination = (wayPoints[wayPointIndex].position);
+                if (animFin == false)
+                {
+                    animator.SetTrigger("DoWalking");
+                }
+
+
+            }
+            else
+            {
+                agent.speed = runSpeed;
+                agent.destination = player.transform.position;
+            }
+            if (distance < attackRange)
+            {
+                player.GetComponent<Player>().health -= damage;
+            }
+            
+            
         }
-        if(distance < attackRange)
+        if (wayPointIndex == 0)
         {
-            player.GetComponent<Player>().health -= damage;
+            
+            animator.SetTrigger("DoKontKrabben");
+            walkSpeed = 0;
+            Timer();
+            wayPointIndex++;
+
         }
     }
     public void WayPoints()
@@ -56,9 +85,21 @@ public class Nav : MonoBehaviour
             if(wayPointIndex > 3)
             {
                 wayPointIndex = 0;
+                
             }
 
         }
         
+    }
+    public void Timer()
+    {
+        animbegin = true;
+        timer += 1 * Time.deltaTime;
+        if(timer >= 6)
+        {
+            walkSpeed = 3;
+            animbegin = false;
+            timer = 0;
+        }
     }
 }
