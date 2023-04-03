@@ -15,7 +15,7 @@ public class Nav : MonoBehaviour
     private NavMeshAgent agent;
     public float runToRange;
     public float attackRange;
-    public float walkSpeed;
+    
     public float runSpeed;
     public int startDelay;
     public bool animFin;
@@ -43,7 +43,7 @@ public class Nav : MonoBehaviour
             if (distance > runToRange)
             {
                 WayPoints();
-                agent.speed = walkSpeed;
+                
                 agent.destination = (wayPoints[wayPointIndex].position);
                 if (animFin == false)
                 {
@@ -64,13 +64,13 @@ public class Nav : MonoBehaviour
             
             
         }
-        if (wayPointIndex == 0)
+        if (wayPointIndex == 1)
         {
             
             animator.SetTrigger("DoKontKrabben");
-            walkSpeed = 0;
+            agent.speed = 0;
             Timer();
-            wayPointIndex++;
+            //wayPointIndex++;
 
         }
     }
@@ -97,7 +97,8 @@ public class Nav : MonoBehaviour
         timer += 1 * Time.deltaTime;
         if(timer >= 6)
         {
-            walkSpeed = 3;
+            wayPointIndex++;
+            agent.speed = 30;
             animbegin = false;
             timer = 0;
         }
