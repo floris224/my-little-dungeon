@@ -8,9 +8,10 @@ public class Conversation : MonoBehaviour
 {
     public Text conversation;
     public float range;
-    public int conversationIndex; 
+    public int conversationIndex;
+    public Transform phone; 
 
-
+     
     void Start()
     {
         conversationIndex = 0; 
@@ -19,6 +20,15 @@ public class Conversation : MonoBehaviour
    
     void Update()
     {
+
+       
+            float distance = Vector3.Distance(phone.position, transform.position);
+        if (distance < 5)
+        {
+           
+        }
+       
+
         conversation.text = "test text";
         if (Input.GetKeyUp(KeyCode.Space))
         {
