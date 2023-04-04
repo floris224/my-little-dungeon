@@ -19,28 +19,19 @@ public class Look : MonoBehaviour
    
     void Update()
     {
-        mouseX = Input.GetAxis("Mouse X") *  mousSens;
-        mouseY = Input.GetAxis("Mouse Y") *  mousSens;
+        //defineren welke as wat doet
+        mouseX = Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y");
 
+        // defineren van de vector3 over welke as hij zal moeten draaien
         dir = new Vector3(0, mouseX, 0);
         playerBody.transform.Rotate(dir * mousSens * Time.deltaTime);
 
-        //float mouseYClamped = Mathf.Clamp(mouseY, -90f, 90f);
-
-        //dir = new Vector3(-mouseY, 0, 0);
-        rotY += mouseY;
+        // defineren over welke as de camera moet draaien & het clampen van de rotatie.
+        rotY += mouseY * mousSens * Time.deltaTime;
         rotY = Mathf.Clamp(rotY, -90, 90);
         Vector3 e = transform.eulerAngles;
         e.x = -rotY;
         transform.eulerAngles = e;
-
-
-
-        //transform.Rotate(dir * mousSens * Time.deltaTime);
-        /*transform.eulerAngles = new Vector3(
-            Mathf.Clamp(transform.rotation.eulerAngles.x, -90, 90),
-            transform.rotation.eulerAngles.y,
-            transform.rotation.eulerAngles.z
-        );*/
     }
 }

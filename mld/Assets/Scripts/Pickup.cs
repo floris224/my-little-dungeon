@@ -13,7 +13,7 @@ public class Pickup : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Physics.Raycast(fpsCam.transform.position, transform.forward, out hit, 5f))
+            if (Physics.Raycast(fpsCam.transform.position, transform.forward, out hit, 50f))
             {
                 Debug.Log("Hallo");
 
