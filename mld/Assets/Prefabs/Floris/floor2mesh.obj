@@ -1,0 +1,25 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v3.1.161429758)
+
+mtllib floor2mesh.mtl
+
+# vertex positions
+v -8.646882 0.010145 -0.675472
+v -8.646882 0.010145 1.324528
+v -6.646882 0.010145 1.324528
+v -6.646882 0.010145 -0.675472
+
+# UV coordinates
+vt 0.000100 0.000100
+vt 0.999900 0.000100
+vt 0.999900 0.999900
+vt 0.000100 0.999900
+
+# vertex normals
+vn 0.000000 1.000000 0.000000
+
+# Mesh
+g Floor hp.004
+usemtl floor
+f 4/4/1 1/1/1 2/2/1
+f 2/2/1 3/3/1 4/4/1
