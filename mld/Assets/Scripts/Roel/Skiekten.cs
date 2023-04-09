@@ -8,6 +8,10 @@ public class Skiekten : MonoBehaviour
     public Camera fpsCam;
     public RaycastHit hit;
 
+    public AudioSource source;
+    public AudioClip clip;
+
+    public ParticleSystem muzzleFlash;
 
     // Update is called once per frame
     void Update()
@@ -15,6 +19,9 @@ public class Skiekten : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot(100f);
+            source.PlayOneShot(clip);
+            muzzleFlash.Play();
+
         }
     }
 

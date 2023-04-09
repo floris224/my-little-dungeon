@@ -7,7 +7,10 @@ public class Movement : MonoBehaviour
     public float hor, vert;
     public Vector3 dir;
     public float stamina = 50f;
-    
+
+    public AudioSource source;
+    public AudioClip walkSound;
+
     void Update()
     {
         hor = Input.GetAxis("Horizontal");
@@ -25,6 +28,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            
             stamina += 5 * Time.deltaTime;
             if (stamina >= 50)
             {
@@ -36,7 +40,8 @@ public class Movement : MonoBehaviour
 
     public void Walk(float walkSpeed)
     {
-        transform.Translate(dir * walkSpeed * Time.deltaTime); 
+        transform.Translate(dir * walkSpeed * Time.deltaTime);
+        
     }
     public void Run(float runSpeed)
     {
