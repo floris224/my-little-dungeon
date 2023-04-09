@@ -18,7 +18,10 @@ public class Nav : MonoBehaviour
     public float runSpeed;
     public float timer;
     public bool animbegin;
-    
+    public AudioSource beer;
+    public AudioSource grom;
+    public AudioClip squeaky;
+    public AudioClip rawrxd;
     // Start is called befo{re the first frame update
     void Start()
     {
@@ -31,6 +34,15 @@ public class Nav : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(agent.speed >= 0 && Vector3.Distance(transform.position, player.transform.position) <= 20f)
+        {
+            beer.enabled = true;
+        }
+        else
+        {
+            beer.enabled = false;
+        }
+
         if (animbegin == false)
         {
 
@@ -44,6 +56,7 @@ public class Nav : MonoBehaviour
                 
                 // functie waypoints wordt hier aangeroepen om uitgevoerd te worden.
                 WayPoints();
+                grom.enabled = false ;
                 
                
                 // hier wordt de destination van de ai bepaald.
@@ -57,6 +70,7 @@ public class Nav : MonoBehaviour
             }
             else
             {
+                grom.enabled = true;
                 agent.speed = runSpeed;
                 agent.destination = player.transform.position;
             }

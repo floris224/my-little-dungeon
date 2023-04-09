@@ -9,6 +9,7 @@ public class Pickup : MonoBehaviour
     public RaycastHit hit;
     public Camera fpsCam;
     public GameObject floor;
+    public AudioSource duck;
     
     public TextMeshProUGUI currentPointsText;
     public TextMeshProUGUI targetPointsText;
@@ -64,6 +65,7 @@ public class Pickup : MonoBehaviour
     {
         if (hit.collider.CompareTag("Quest"))
         {
+            duck.enabled = true;
             Destroy(hit.collider.gameObject);
             UpdatePanelCounter();
         }
