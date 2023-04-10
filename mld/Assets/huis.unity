@@ -11199,6 +11199,7 @@ MonoBehaviour:
   hand: {fileID: 1809002324}
   fpsCam: {fileID: 1554131411}
   floor: {fileID: 1546311016}
+  duck: {fileID: 0}
   currentPointsText: {fileID: 0}
   targetPointsText: {fileID: 0}
   targetQuestPoints: 5
@@ -13837,6 +13838,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8276132171663114416, guid: 1832183877fba0b46abd37e604b88c0a, type: 3}
     - {fileID: 5341739133015401622, guid: 1832183877fba0b46abd37e604b88c0a, type: 3}
+    - {fileID: 6361179690075285452, guid: 1832183877fba0b46abd37e604b88c0a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1832183877fba0b46abd37e604b88c0a, type: 3}
 --- !u!1001 &1909415833
 PrefabInstance:
