@@ -103,5 +103,5 @@ public class MenuController : MonoBehaviour
         panelWQ.SetActive(false);
         panelM.SetActive(true);
     }
-    
+  
 } 

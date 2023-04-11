@@ -83,4 +83,9 @@ public class PauzeMenu : MonoBehaviour
         panelP.SetActive(true);
         isActive = true;
     }
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
 }

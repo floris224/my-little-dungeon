@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     public int health;
     public Transform[] enemy;
+    public GameObject defeat;
     
     //playerPref is dat de data wordt opgeslagen op de computer inplaats van op de cloud daarom is dit niet veilig
 
@@ -70,5 +71,14 @@ public class Player : MonoBehaviour
             PlayerPrefs.GetFloat(i.ToString() + "Enemy" + j.ToString() + "Z")
             );
         enemy[j].position = enemyPos;
+    }
+    public void Death()
+    {
+        if (health == 0)
+        {
+            Time.timeScale = 0;
+            defeat.SetActive(true);
+           
+        }
     }
 }

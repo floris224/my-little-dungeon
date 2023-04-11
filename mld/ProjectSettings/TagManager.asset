@@ -9,6 +9,7 @@ TagManager:
   - Interactable
   - Quest
   - Wall
+  - End
   layers:
   - Default
   - TransparentFX
