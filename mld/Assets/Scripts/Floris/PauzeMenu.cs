@@ -10,6 +10,7 @@ public class PauzeMenu : MonoBehaviour
     public GameObject panelS;
     public GameObject panelL;
     public bool isActive;
+    public Player death;
     void Start()
     {
         
@@ -26,7 +27,7 @@ public class PauzeMenu : MonoBehaviour
             }
             else
             {
-                PauzeGame();
+                MenuNog();
             }
             
         }
@@ -87,5 +88,12 @@ public class PauzeMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    
+    public void MenuNog()
+    {
+        if(!death.defeat.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            PauzeGame();
+        }
+    }
 }

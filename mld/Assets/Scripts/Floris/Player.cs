@@ -8,12 +8,16 @@ public class Player : MonoBehaviour
     public int health;
     public Transform[] enemy;
     public GameObject defeat;
-    
-    //playerPref is dat de data wordt opgeslagen op de computer inplaats van op de cloud daarom is dit niet veilig
+    public GameObject menu;
 
+    //playerPref is dat de data wordt opgeslagen op de computer inplaats van op de cloud daarom is dit niet veilig
     public void Start()
     {
         
+    }
+    public void Update()
+    {
+        Death();
     }
 
     public void SavePlayer(int i)
@@ -77,8 +81,10 @@ public class Player : MonoBehaviour
         if (health == 0)
         {
             Time.timeScale = 0;
+       
             defeat.SetActive(true);
-           
+            menu.SetActive(false);
+            
         }
     }
 }
