@@ -6,6 +6,9 @@ using UnityEngine.UIElements;
 
 public class Pickup : MonoBehaviour
 {
+    public GameObject doorClose;
+    public GameObject doorOpen;
+
     public GameObject panel;
     public GameObject duck1;
     public GameObject duck2;
@@ -127,11 +130,10 @@ public class Pickup : MonoBehaviour
     {
         if (currentQuestPoints == 5)
         {
-
-            if (Input.GetKeyDown(KeyCode.E) && hit.transform.CompareTag("End"))
-            {
-                finish.SetActive(true);
-            }
+            doorClose.SetActive(false);
+            doorOpen.SetActive(true);
+            
+           
 
 
         }

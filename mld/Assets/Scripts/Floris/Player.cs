@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+//using UnityEngine.UIElements;
+
 
 public class Player : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     public void Update()
     {
         Death();
+        //Cursor.lockState = CursorLockMode.None;
     }
 
     public void SavePlayer(int i)
@@ -81,10 +83,11 @@ public class Player : MonoBehaviour
         if (health == 0)
         {
             Time.timeScale = 0;
-       
             defeat.SetActive(true);
             menu.SetActive(false);
-            
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+
         }
     }
 }
