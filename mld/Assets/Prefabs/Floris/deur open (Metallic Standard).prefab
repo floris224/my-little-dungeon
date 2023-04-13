@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6471779852619499807}
   - component: {fileID: 6210355339647253927}
+  - component: {fileID: 1410923045282870881}
   m_Layer: 0
   m_Name: deur open (Metallic Standard)
   m_TagString: Untagged
@@ -127,5 +128,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.43784332, y: 2.9908977, z: 1.2571392}
+  m_Center: {x: -0.7290573, y: 1.3445413, z: 2.8833752}
+--- !u!65 &1410923045282870881
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952546840239543205}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4030342, y: 2.3925714, z: 1.0750618}
+  m_Center: {x: 0.8916683, y: 1.1804786, z: 2.7224045}

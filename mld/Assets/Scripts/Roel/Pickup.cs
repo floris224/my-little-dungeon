@@ -33,6 +33,7 @@ public class Pickup : MonoBehaviour
     
     void Update()
     {
+        Finish();
         if (Input.GetKey(KeyCode.E))
         {
             if (Physics.Raycast(transform.position, transform.forward, out hit, 50f))
@@ -40,7 +41,7 @@ public class Pickup : MonoBehaviour
                 Gun();
                 Interact();
                 QuestDuck();
-
+                
             }
 
 

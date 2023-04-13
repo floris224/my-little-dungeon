@@ -15,6 +15,7 @@ public class MenuController : MonoBehaviour
     public GameObject panelWS;
     public GameObject panelLoading;
     public GameObject panelControls;
+    public GameObject panelControls2;
 
     public void Start()
     {
@@ -51,6 +52,7 @@ public class MenuController : MonoBehaviour
     }
     public void PlayButton()
     {
+
         SceneManager.LoadScene(1, LoadSceneMode.Single);
         
     }
@@ -103,5 +105,10 @@ public class MenuController : MonoBehaviour
         panelWQ.SetActive(false);
         panelM.SetActive(true);
     }
-  
+    public void controlsFirst()
+    {
+        panelM.SetActive(false);
+        panelControls2.SetActive(true) ;
+        
+    }
 } 
