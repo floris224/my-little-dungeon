@@ -22,10 +22,13 @@ public class Pickup : MonoBehaviour
     public RaycastHit hit;
     public Camera fpsCam;
     public GameObject floor;
+   
     public AudioSource duck;
+    public AudioClip ducky;
     
     public TextMeshProUGUI currentPointsText;
     public TextMeshProUGUI targetPointsText;
+   
     public int targetQuestPoints = 5;
     public int currentQuestPoints = 0;
     public int points = 1;
@@ -80,10 +83,12 @@ public class Pickup : MonoBehaviour
     {
         if (hit.collider.CompareTag("Quest"))
         {
-            duck.enabled = true;
+            
+            duck.PlayOneShot(ducky);
             Destroy(hit.collider.gameObject);
             UpdatePanelCounter();
             SpawnDucky();
+            
         }
         
     }

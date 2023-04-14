@@ -16,7 +16,8 @@ public class Sounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, player.transform.position) >= 4)
+        float distance = (Vector3.Distance(transform.position, player.transform.position));
+        if (distance <= 2)
         {
             ring.enabled = true;
         }
